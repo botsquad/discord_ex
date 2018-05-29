@@ -29,9 +29,8 @@ defmodule DiscordEx.RestClient do
 
   # Server Callbacks
 
-  def init(:ok, opts) do
-    REST.start
-    opts
+  def init(args) do
+    {:ok, args}
   end
 
   def handle_call({:resource, :get, path, nil}, _from, opts) do

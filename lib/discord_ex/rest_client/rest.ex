@@ -35,6 +35,10 @@ defmodule DiscordEx.Connections.REST do
     end
   end
 
+  defp process_request_options(opts) do
+    [{:ssl, [versions: [:"tlsv1.1"]]} | opts]
+  end
+
   defp process_response_body(body) do
     case Poison.decode(body) do
              {:ok, res} -> res

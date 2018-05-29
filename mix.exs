@@ -4,7 +4,7 @@ defmodule DiscordEx.Mixfile do
   def project do
     [app: :discord_ex,
      version: "1.1.18",
-     elixir: "~> 1.5.2",
+     elixir: "~> 1.6",
      name: "Discord Elixir",
      source_url: "https://github.com/rmcafee/discord_ex",
      build_embedded: Mix.env == :prod,

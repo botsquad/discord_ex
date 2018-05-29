@@ -33,7 +33,7 @@ defmodule DiscordEx.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:poison, "~> 2.0"},
+      {:poison, "~> 3.0"},
       {:websocket_client, "~> 1.2.4"},
       {:httpoison, "~> 0.9.0"},
       {:kcl, "~> 0.6.3"},
@@ -47,7 +47,7 @@ defmodule DiscordEx.Mixfile do
       # Docs dependencies
       {:earmark, "~> 1.1", only: [:dev, :docs]},
       {:ex_doc, "~> 0.16", only: [:dev, :docs]},
-      {:inch_ex, "~> 0.2", only: [:dev, :docs]}
+      {:inch_ex, "~> 0.5.6", only: [:dev, :docs]}
     ]
   end
 

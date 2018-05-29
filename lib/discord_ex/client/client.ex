@@ -75,7 +75,7 @@ defmodule DiscordEx.Client do
 
     :crypto.start()
     :ssl.start()
-    :websocket_client.start_link(socket_url(opts), __MODULE__, opts)
+    :websocket_client.start_link(socket_url(opts), __MODULE__, opts, [socket_opts: [versions: [:"tlsv1.1"]]])
   end
 
   # Required Functions and Default Callbacks ( you shouldn't need to touch these to use client)

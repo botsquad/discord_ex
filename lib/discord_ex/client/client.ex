@@ -99,7 +99,7 @@ defmodule DiscordEx.Client do
 
   def ondisconnect({:remote, :closed}, state) do
     # Reconnection with resume opcode should be attempted here
-    {:close, {:remote, :closed}, state}
+    Process.exit(self(), {:error, :remote_closed})
   end
 
   @doc """
@@ -178,7 +178,7 @@ defmodule DiscordEx.Client do
     # Discord enforces reconnection. Websocket should be
     # reconnected and resume opcode sent to playback missed messages.
     # For now just kill the connection so that a supervisor can restart us.
-    {:close, "Discord enforced reconnect", state}
+    Process.exit(self(), {:error, :reconnect})
   end
 
   defp _handle_data(%{op: :invalid_session} = _data, state) do
@@ -250,7 +250,7 @@ defmodule DiscordEx.Client do
     # Heartbeat process reports stale connection. Websocket should be
     # reconnected and resume opcode sent to playback missed messages.
     # For now just kill the connection so that a supervisor can restart us.
-    {:close, "Heartbeat stale", state}
+    Process.exit(self(), {:error, :heartbeat_stale})
   end
 
   def websocket_terminate(reason, _conn_state, state) do

@@ -253,6 +253,10 @@ defmodule DiscordEx.Client do
     Process.exit(self(), {:error, :heartbeat_stale})
   end
 
+  def websocket_info(event, _connection, state) do
+    handle_event({:websocket_info, event}, state)
+  end
+
   def websocket_terminate(reason, _conn_state, state) do
     Logger.info "Websocket closed in state #{inspect state} with reason #{inspect reason}"
     Logger.info "Killing seq_num process!"
